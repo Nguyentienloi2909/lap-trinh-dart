@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 class PerSon{
@@ -12,9 +13,11 @@ class PerSon{
     this._HoDem = stdin.readLineSync()!;
     stdout.write('Nhập Tên: ');
     this._Ten = stdin.readLineSync()!;
-    stdout.write('Nhập Ngay Tháng Năm: ');
+    stdout.write('Nhập Ngày: ');
     this._ngay = int.parse(stdin.readLineSync()!);
+    stdout.write('Nhập Tháng: ');
     this._thang = int.parse(stdin.readLineSync()!);
+    stdout.write('Nhập Năm: ');
     this._nam = int.parse(stdin.readLineSync()!);
   }
 
@@ -23,8 +26,27 @@ class PerSon{
   }
 }
 
+class SinhVien extends PerSon{
+  String _msv = '';
+  num _avgDiem = 0.0;
+
+  void nhap(){
+    super.nhap();
+    stdout.write('Nhập Ma Sinh Vien: ');
+    this._msv = stdin.readLineSync()!;
+    stdout.write('Diem Trung Binh: ');
+    this._avgDiem = num.parse(stdin.readLineSync()!);
+  }
+
+
+
+  void show(){ 
+    print('${super._HoDem}\t ${super._Ten}\t ${super._ngay}/${super._ngay}/${super._nam}\t ${this._msv}\t ${this._avgDiem}');
+  }
+}
+
 void main(List<String> args) {
-  var a = PerSon();
+  var a = SinhVien();
   a.nhap();
   a.show();
 }
