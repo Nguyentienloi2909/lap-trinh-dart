@@ -43,10 +43,26 @@ class SinhVien extends PerSon{
   void show(){ 
     print('${super._HoDem}\t ${super._Ten}\t ${super._ngay}/${super._ngay}/${super._nam}\t ${this._msv}\t ${this._avgDiem}');
   }
+  String MSV(){
+    return this._msv;
+  }
+
+  num AVGDiem(){
+    return this._avgDiem;
+  }
 }
 
 void main(List<String> args) {
-  var a = SinhVien();
-  a.nhap();
-  a.show();
+  stdout.write('Nhập số lượng phần tử: ');
+  int n = int.parse(stdin.readLineSync()!);
+  List <SinhVien> SV = [];
+  for(int i = 0; i<n; i++){
+    var a = SinhVien();
+    a.nhap();
+    SV.add(a);
+  }
+
+  for(int i = 0; i<n; i++){
+    SV[i].show();
+  }
 }
