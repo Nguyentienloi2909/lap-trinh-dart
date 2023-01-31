@@ -19,7 +19,12 @@ abstract class PerSon{
     print('helo');
   }
 }
-class User extends PerSon {
+
+class Employee {
+  bool isEmployee  = false;
+}
+
+class User extends PerSon with Spaceman, Employee {
   String email = "";
   User(String name, int age, this.email):super(name, age);
   
@@ -27,17 +32,25 @@ class User extends PerSon {
   prinInfo() {
     print('name: $name, age: $age, email: $email');
   }
-  
+
   printSomething() {
     super.printSomething();
-    print('xin choà');
+    print('xin chào');
   }
+}
 
-
+class Spaceman {
+  bool isFlying = false;
+  
+  fly() {
+    print('Flying');
+  }
 }
 
 void main(List<String> args) {
   var user1 = User("loi", 20, "loinguyen050267@gmail.com");
   user1.prinInfo();
   user1.printSomething();
+  user1.fly();
+  print(user1.isEmployee);
 }
