@@ -104,8 +104,20 @@ class NVChinhThuc extends LaoDong {
   }
 }
 
+void sapxep(List<LaoDong> a, int n){
+  for(int i =0 ; i<n-1; i++){
+    for(int j =i+1; j<n; j++){
+      if(checkPerson(a[i], a[j])){
+        var tamp = a[i];
+        a[i] = a[j];
+        a[j] = tamp;
+      }
+    }
+  }
+}
+
 void main(List<String> args) {
-  int a= 0;
+  int a= 0, n =0, n1 = 0;
   List <LDThoiVu> LDTV = [];
   List <NVChinhThuc> NVCT = [];
   do {
@@ -122,22 +134,31 @@ void main(List<String> args) {
     switch (a) {
       case 1:
         stdout.write('Nhập số lượng lao động thời vụ: ');
-        int n = int.parse(stdin.readLineSync()!);
+        n = int.parse(stdin.readLineSync()!);
         for (int i = 0; i<n; i++){
+          print('');
           var ldtv = LDThoiVu();
           ldtv.nhap();
-          LDTV.add(ldtv);
-          
-        }
-        for (int i = 0; i<n; i++){ 
-          LDTV[i].xuat();   
+          LDTV.add(ldtv);      
         }
         break;
       case 2:
-        
+        stdout.write('Nhập số lượng lao động chinh thuc: ');
+        n1 = int.parse(stdin.readLineSync()!);
+        for (int i = 0; i<n1; i++){
+          print('');
+          var ldct = NVChinhThuc();
+          ldct.nhap();
+          NVCT.add(ldct);       
+        }
         break;
       case 3:
-        
+        for(int i = 0; i < n; i++){
+          LDTV[i].xuat();
+        }
+        for(int i = 0; i < n1; i++){
+          NVCT[i].xuat();
+        }
         break;
       case 4:
         
